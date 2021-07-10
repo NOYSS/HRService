@@ -1,0 +1,9 @@
+${AnsiColor.CYAN},--------.                   ,--.
+${AnsiColor.CYAN}'--.  .--'  ,---.   ,---.  ,-'  '-.
+${AnsiColor.CYAN}   |  |    | .-. : (  .-'  '-.  .-'
+${AnsiColor.CYAN}   |  |    \   --. .-'  `)   |  |   .--.
+${AnsiColor.CYAN}   `--'     `----' `----'    `--'   '--'
+
+${AnsiColor.BRIGHT_GREEN}NAME    : ${AnsiColor.BLUE}${app.name}
+${AnsiColor.BRIGHT_GREEN}VERSION : ${AnsiColor.BLUE}${app.version}
+${AnsiColor.BRIGHT_GREEN}PORT : ${AnsiColor.BLUE}${server.port}
