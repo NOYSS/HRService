@@ -1,1 +1,1 @@
-INSERT INTO APP_USER (ID,CREATED_BY,CREATED_DATE,UPDATED_BY,UPDATED_DATE,VERSION,USERNAME,PASSWORD,NAME,STATUS,EMAIL) VALUES (1,null,null,null,null,0,'thanakorn_y','$2a$10$/B3xO55dvuHE0Y7DQ1zpEueNIUXpu.hghje.ZNirsMps/EB.T9i/q','thanakorn','Y','thanakorn.noy@gmail.com');
+INSERT INTO APP_USER (ID,CREATED_BY,CREATED_DATE,UPDATED_BY,UPDATED_DATE,VERSION,USERNAME,PASSWORD,NAME,STATUS,EMAIL) VALUES (1,null,null,null,null,0,'admin','$2a$10$/B3xO55dvuHE0Y7DQ1zpEueNIUXpu.hghje.ZNirsMps/EB.T9i/q','admin','Y','thanakorn.noy@gmail.com');
