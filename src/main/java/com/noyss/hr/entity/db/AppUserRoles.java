@@ -8,16 +8,15 @@ import javax.persistence.*;
 
 @Data
 @Entity
-@SequenceGenerator(initialValue = 1, name = "generation_id", sequenceName = "seq_app_user_ou")
+@SequenceGenerator(initialValue = 1, name = "generation_id", sequenceName = "seq_app_user_roles")
 @EqualsAndHashCode(callSuper = false)
-@Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
-public class AppUserOu extends BaseEntity {
+public class AppUserRoles extends BaseEntity {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "appUser")
     private AppUser appUser;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "ou")
-    private Ou ou;
+    @JoinColumn(name = "appRole")
+    private AppRole appRole;
 }

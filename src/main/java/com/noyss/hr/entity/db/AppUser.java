@@ -29,9 +29,11 @@ public class AppUser   extends BaseEntity {
     @Column(name = "status", length = 1)
     private String status;
 
-    @ManyToMany(fetch = FetchType.LAZY)
-    @JoinTable(name = "app_user_roles",
-            joinColumns = @JoinColumn(name = "app_user_id"),
-            inverseJoinColumns = @JoinColumn(name = "App_role_id"))
-    private Set<AppRole> appRoles  = new HashSet<>();
+    @ToString.Exclude
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "appUser")
+    private List<AppUserRoles> appUserRoles = new ArrayList<>();
+
+    @ToString.Exclude
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "appUser")
+    private List<AppUserOu> appUserOus = new ArrayList<>();
 }
