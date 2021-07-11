@@ -9,6 +9,7 @@ import org.hibernate.Session;
 import org.hibernate.transform.AliasToEntityMapResultTransformer;
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -26,6 +27,9 @@ public class AppUserRepository implements IAppUserRepositoryCustom {
     @Autowired
     private IAppUserRepository iAppUserRepository;
 
+    @Autowired
+    PasswordEncoder encoder;
+
     @Override
     @Transactional
     public Object save(String dataJson) {
@@ -38,8 +42,8 @@ public class AppUserRepository implements IAppUserRepositoryCustom {
             }else{
                 appUser = iAppUserRepository.getById(id);
             }
-            appUser.setUsername(jsonObject.optString("username", ""));
-            appUser.setPassword(jsonObject.optString("password", ""));
+            appUser.setUsername(jsonObject.optString("username", "").toLowerCase());
+            appUser.setPassword(encoder.encode(jsonObject.optString("password", "")));
             appUser.setStatus(jsonObject.optString("status", ""));
             iAppUserRepository.saveAndFlush(appUser);
             return appUser;

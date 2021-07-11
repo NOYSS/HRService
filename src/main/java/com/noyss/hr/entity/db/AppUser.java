@@ -7,7 +7,9 @@ import lombok.ToString;
 
 import javax.persistence.*;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 @Data
 @Entity
@@ -16,14 +18,20 @@ import java.util.List;
 @Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
 public class AppUser   extends BaseEntity {
 
+    private String name;
+
     private String username;
 
     private String password;
 
+    private String email;
+
     @Column(name = "status", length = 1)
     private String status;
 
-    @ToString.Exclude
-    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "appUser")
-    private List<AppUserRole> appUserRoles = new ArrayList<>();
+    @ManyToMany(fetch = FetchType.LAZY)
+    @JoinTable(name = "app_user_roles",
+            joinColumns = @JoinColumn(name = "app_user_id"),
+            inverseJoinColumns = @JoinColumn(name = "App_role_id"))
+    private Set<AppRole> appRoles  = new HashSet<>();
 }
