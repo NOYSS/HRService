@@ -40,6 +40,7 @@ public class SecurityConfigurerAdapter extends WebSecurityConfigurerAdapter {
                 "/appName",
                 "/appVersion",
                 "/appProfile",
+                "/encoder",
                 "/h2-console/**",
                 "/login");
     }
