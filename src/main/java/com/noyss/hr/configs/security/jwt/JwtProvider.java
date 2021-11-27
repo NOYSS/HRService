@@ -49,6 +49,7 @@ public class JwtProvider {
         Key SIGN_KEY = new SecretKeySpec(Base64.getDecoder().decode(jwtSecret), SignatureAlgorithm.HS256.getJcaName());
         try {
             Jwts.parser().setSigningKey(SIGN_KEY).parseClaimsJws(authToken);
+            logger.info("Validate Jwt Token ok.");
             return true;
         } catch (SignatureException e) {
             logger.error("Invalid JWT signature -> Message: {} ", e);

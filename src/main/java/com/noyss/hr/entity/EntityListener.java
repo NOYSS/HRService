@@ -1,8 +1,10 @@
 package com.noyss.hr.entity;
 
+import com.noyss.hr.configs.security.UserSession;
 import com.noyss.hr.util.AppUtil;
 import com.noyss.hr.util.DateUtil;
 import org.apache.commons.beanutils.BeanUtils;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.util.ReflectionUtils;
 
@@ -15,12 +17,23 @@ import java.util.Date;
 @Component
 public class EntityListener {
 
+    @Autowired
+    private static UserSession userSession;
+
+    @Autowired
+    public void setUserSession(UserSession service) {
+        this.userSession = service;
+    }
+
     @PrePersist
     public void prePersistFunction(Object object) {
         String user = null;
         Date currentDate = DateUtil.getCurrentDate();
         try {
+            user = userSession.getUsername();
+            if(user == null){
             user = "System";
+            }
         } catch (Exception e) {
 
         }
@@ -36,7 +49,10 @@ public class EntityListener {
         String user = null;
         Date currentDate = DateUtil.getCurrentDate();
         try {
-            user = "System";
+            user = userSession.getUsername();
+            if(user == null){
+                user = "System";
+            }
         } catch (Exception e) {
 
         }
